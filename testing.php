@@ -27,5 +27,8 @@ $programmerUrl = $response->getHeader('Location');
 // 2) GET a programmer resource
 $response = $client->get($programmerUrl);
 
+// 3) GET a collection
+$response = $client->get('/api/programmers');
+
 echo $response;
 echo "\n\n";
