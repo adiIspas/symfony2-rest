@@ -15,7 +15,7 @@ class ProgrammerControllerTest extends ApiTestCase
 {
     public function testPOST()
     {
-        $nickname = 'ObjectOrienter'.rand(0, 999);
+        $nickname = 'ObjectOrienter';
 
         $data = array(
             'nickname' => $nickname,
@@ -29,8 +29,9 @@ class ProgrammerControllerTest extends ApiTestCase
         ]);
 
         $this->assertEquals(201,$response->getStatusCode());
-        $this->assertTrue($response->hasHeader('Location'));
+        $this->assertEquals('/api/programmers/ObjectOrienter',$response->getHeader('Location'));
         $finishedData = json_decode($response->getBody(), true);
         $this->assertArrayHasKey('nicknamne',$finishedData);
+        $this->assertEquals('ObjectOrienter', $data['nickname']);
     }
 }
